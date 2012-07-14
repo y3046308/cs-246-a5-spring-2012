@@ -22,6 +22,11 @@ BottlingPlant::BottlingPlant( Printer &prt, NameServer &nameServer, unsigned int
    numFla = maxStockPerFlavour;
    DeliveryTime = timeBetweenShipments;   
    
+   for (int i = 0 ; i < 4 ; i += 1)
+   {
+       list[i] = 0;    
+   }
+   
    printer->print(Printer::BottlingPlant, 'S'); 
    
     // It begins by creating a truck
