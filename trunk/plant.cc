@@ -51,7 +51,12 @@ BottlingPlant::~BottlingPlant()
    numFla = 0;
    DeliveryTime = 0; 
    
-    printer->print(Printer::BottlingPlant, 'F');                               
+   for (int i = 0 ; i < 4 ; i += 1)
+   {
+       list[i] = 0;    
+   }
+   
+   printer->print(Printer::BottlingPlant, 'F');                               
 }
 
 /*
