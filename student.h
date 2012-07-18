@@ -6,7 +6,8 @@
 #include "flavour.h"
 
 class Student {
-      unsigned int student_id, how_many, flavour, how_many_bought ;
+      unsigned int student_id, how_many, how_many_bought ;
+      Flavours student_flavour;
       WATcard *myCard;
       Printer *student_printer;
       Nameserver *student_server;
