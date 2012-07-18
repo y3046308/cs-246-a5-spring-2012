@@ -16,7 +16,7 @@ Truck::Truck( Printer &prt, NameServer &nameServer, BottlingPlant &plant,
          list[i] = 0;
      }
      
-     printer->print(Printer::Truck, 'S');
+     truck_printer->print(Printer::Truck, 'S');
 }
 
 Truck::~Truck()
@@ -31,7 +31,7 @@ Truck::~Truck()
          list[i] = 0;
      }
      
-     printer->print(Printer::Truck, 'F');
+     truck_printer->print(Printer::Truck, 'F');
                
 }
 
@@ -49,12 +49,12 @@ void Truck::action()
 {
      // get stocks from the plant
      truck_Plant->getShipment(list);
-     printer->print(truck_printer::Truck, 'P', how_many(list));
+     truck_printer->print(truck_printer::Truck, 'P', how_many(list));
      
      VendingMachine** VendList = truck_server->getMachineList();
      for (unsigned int i = 0 ; i < numMac ; i += 1)
      {
-        printer->print(Printer::Truck, 'd', VendList[i]->getId(), how_many(list)); 
+        truck_printer->print(Printer::Truck, 'd', VendList[i]->getId(), how_many(list)); 
         
         unsigned int *curr_stock = VendList[i]->inventory();
         unsigned int not_enough = 0;
@@ -75,10 +75,10 @@ void Truck::action()
         }
         if (not_enough > 0)
         {
-              printer->print(Printer::Truck, 'U', VendList[i]->getId(), not_enough);          
+              truck_printer->print(Printer::Truck, 'U', VendList[i]->getId(), not_enough);          
         }
         
-        printer->print(Printer::Truck, 'D', VendList[i]->getId(), how_many(list));
+        truck_printer->print(Printer::Truck, 'D', VendList[i]->getId(), how_many(list));
         curr_stock[i]->restocked();
         if (how_many(list) == 0)
         {
