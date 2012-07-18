@@ -27,7 +27,7 @@ BottlingPlant::BottlingPlant( Printer &prt, NameServer &nameServer, unsigned int
        list[i] = 0;    
    }
    
-   printer->print(Printer::BottlingPlant, 'S'); 
+   plant_printer->print(Printer::BottlingPlant, 'S'); 
    
     // It begins by creating a truck
     truck = new Truck(*plant_printer, *plant_server, *this, numMac, numFla );
@@ -56,7 +56,7 @@ BottlingPlant::~BottlingPlant()
        list[i] = 0;    
    }
    
-   printer->print(Printer::BottlingPlant, 'F');                               
+   plant_printer->print(Printer::BottlingPlant, 'F');                               
 }
 
 /*
@@ -70,7 +70,7 @@ void BottlingPlant::getShipment( unsigned int cargo[ ] )
      {
          cargo[i] = list[i];    
      }
-     printer->print(Printer::BottlingPlant, 'P')
+     plant_printer->print(Printer::BottlingPlant, 'P')
 }
 
 /*
@@ -85,7 +85,7 @@ void BottlingPlant::action()
      int on_strike = prng(1,5)
      if (on_strike == 1) // plant on strike
      {
-        printer->print(Printer::BottlingPlant, 'X')
+        plant_printer->print(Printer::BottlingPlant, 'X')
         return;         
      }
      else
@@ -117,5 +117,5 @@ void production_run()
         list[i] = rand_stock;
         production_size += rand_stock;
     }
-    printer->print(Printer::BottlingPlant, 'G', production_size); 
+    plant_printer->print(Printer::BottlingPlant, 'G', production_size); 
 }
