@@ -9,7 +9,7 @@
 WATCardOffice::WATCardOffice( Printer &prt )
 {
     office_printer = &prt;
-    printer->print(Printer::WATCardOffice, 'S');                          
+    office_printer->print(Printer::WATCardOffice, 'S');                          
 }
 
 /*
@@ -20,7 +20,7 @@ WATCardOffice::WATCardOffice( Printer &prt )
 WATCardOffice::~WATCardOffice( Printer &prt )
 {
     office_printer = NULL;
-    printer->print(Printer::WATCardOffice, 'F');                          
+    office_printer->print(Printer::WATCardOffice, 'F');                          
 }
 
 /*
@@ -32,7 +32,7 @@ WATCard *WATCardOffice::create( unsigned int id, unsigned int amount )
 {
         WATcard *new_card = new WATcard;
         WATcard->balance = amount;
-        printer->print(Printer::WATCardOffice, 'C', id, amount);
+        office_printer->print(Printer::WATCardOffice, 'C', id, amount);
         return new_card;       
 }
 
@@ -50,5 +50,5 @@ void WATCardOffice::transfer( unsigned int id, unsigned int amount, WATCard &car
         amount /= 2;
      }
      card.addfund(amount);
-     printer->print(Printer::WATCardOffice, 'T', id, amount);
+     office_printer->print(Printer::WATCardOffice, 'T', id, amount);
 }
