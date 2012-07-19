@@ -6,6 +6,7 @@ class WATCard {
                 unsigned int balance;
       public:
              WATCard();
+             unsigned int curr_balance();
              void add_fund(unsigned int amount);
              void sub_fund(unsigned int amount);
 };
