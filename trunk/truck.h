@@ -2,6 +2,7 @@
 #define __TRUCK_H__
 #include "printer.h"
 #include "nameserver.h"
+#include "plant.h"
 
 class Truck {
       private:
