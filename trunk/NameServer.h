@@ -9,7 +9,7 @@ class NameServer {
 	private:
 		Print *printerptr;
 		unsigned int numVM, numStud, counter;
-		vector<unsigned int> arrayOfMachines;
+		vector<VendingMachine*> arrayOfMachines;
 		
 	public:
 		NameServer( Printer &prt, unsigned int numVendingMachines, unsigned int numStudents );
