@@ -2,7 +2,7 @@
 #include "PRNG.h"
 #include "truck.h"
 #include "printer.h"
-#include "nameserver.h"
+#include "NameServer.h"
 PRNG prng;
 
 /*
