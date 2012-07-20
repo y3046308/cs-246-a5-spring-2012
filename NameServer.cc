@@ -1,4 +1,4 @@
-#include "nameserver.h"
+#include "NameServer.h"
 
 NameServer::NameServer( Printer &prt, unsigned int numVendingMachines, unsigned int numStudents ){
 	printerptr = &prt;
