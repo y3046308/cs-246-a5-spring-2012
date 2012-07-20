@@ -7,12 +7,10 @@
 class VendingMachine {
 // general vending machine
 	protected:
-    	Printer *printerpt;
-      NameServer *Vend_server;
-    	unsigned int VMId;
-    	unsigned int sodaPrice;
-    	unsigned int maxStockEachFlav;
-    	bool restocking;
+    	Printer *vend_printer;
+      NameServer *vend_server;
+    	unsigned int VMId, sodaPrice, maxStockEachFlav, currentStocks[4] ;
+      void set(Printer &prt, NameServer &nameServer, unsigned int id, unsigned int sodaCost, unsigned int maxStockPerFlavour);
 
 	public:
 		enum Status { BUY, STOCK, FUNDS }; // purchase status: successful buy, out of stock, insufficient funds
