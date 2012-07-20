@@ -1,7 +1,7 @@
 #ifndef __BOTTLINGPLANT_H__
 #define __BOTTLINGPLANT_H__
 #include "printer.h"
-#include "nameserver.h"
+#include "NameServer.h"
 #include "truck.h"
 
 class BottlingPlant {
