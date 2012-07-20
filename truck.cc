@@ -1,7 +1,7 @@
 #include "truck.h"
 #include "printer.h"
-#include "nameserver.h"
-#include "bottlingplant.h"
+#include "NameServer.h"
+#include "plant.h"
 
 /*
   purpose: constructor that initializes truck
