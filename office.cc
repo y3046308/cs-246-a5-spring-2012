@@ -30,7 +30,9 @@ WATCardOffice::~WATCardOffice( Printer &prt )
 */
 WATCard *WATCardOffice::create( unsigned int id, unsigned int amount )
 {
+        // creat a new watcard
         WATcard *new_card = new WATcard;
+        // a new watcard is initialized with 'amount'
         WATcard->balance = amount;
         office_printer->print(Printer::WATCardOffice, 'C', id, amount);
         return new_card;       
@@ -47,7 +49,7 @@ void WATCardOffice::transfer( unsigned int id, unsigned int amount, WATCard &car
      
      if (rand == 1)        // if random number is 1, 
      {                     // There is 1/4 change to pick 1 from 1-4
-        amount /= 2;
+        amount /= 2;       // then half of transferred money disapears
      }
      card.addfund(amount);
      office_printer->print(Printer::WATCardOffice, 'T', id, amount);
