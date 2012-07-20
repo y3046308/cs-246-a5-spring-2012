@@ -2,7 +2,7 @@
 #define __STUDENT_H__
 #include "printer.h"
 #include "nameserver.h"
-#inlcude "office.h"
+#include "office.h"
 #include "flavour.h"
 
 class Student {
