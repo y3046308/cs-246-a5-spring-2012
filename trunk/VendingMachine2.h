@@ -1,7 +1,14 @@
+#ifndef __VENDINGMACHINE_H__
+#define __VENDINGMACHINE_H__
+#include "printer.h"
+#include "Watcard.h"
+#include "flavour.h"
+
 class VendingMachine {
 // general vending machine
-	private:
-    	unsigned int printerpt;
+	protected:
+    	Printer *printerpt;
+      NameServer *Vend_server;
     	unsigned int VMId;
     	unsigned int sodaPrice;
     	unsigned int maxStockEachFlav;
@@ -22,13 +29,6 @@ class VendingMachine {
 
 
 class VendingMachineCardEater : public VendingMachine { // specific vending machine
-	private:
-		int printerptr;
-    	unsigned int VMId;
-    	unsigned int sodaPrice;
-    	unsigned int maxStockEachFlav;
-    	bool restocking;
-    	
 	public:
 		VendingMachineCardEater( Printer &prt, NameServer &nameServer,
 			unsigned int id, unsigned int sodaCost, unsigned int maxStockPerFlavour );
@@ -45,14 +45,7 @@ class VendingMachineCardEater : public VendingMachine { // specific vending mach
 
 
 class VendingMachineOverCharger : public VendingMachine { // specific vending machine
-	private:
-		int printerptr;
-    	unsigned int VMId;
-    	unsigned sodaPrice;
-    	unsigned int maxStockEachFlav;
-    	bool restocking;
-    	
-	public:
+   public:
 		VendingMachineOverCharger( Printer &prt, NameServer &nameServer,
 			unsigned int id, unsigned int sodaCost, unsigned int maxStockPerFlavour );
 // member routines from VendingMachine
@@ -62,5 +55,6 @@ class VendingMachineOverCharger : public VendingMachine { // specific vending ma
 		unsigned int cost();
 		unsigned int getId();
 		void restocked();
-
 };
+
+#endif
