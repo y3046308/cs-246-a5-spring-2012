@@ -4,21 +4,20 @@
 #include "Watcard.h"
 #include "flavour.h"
 
+//General Vending Machine
 class VendingMachine {
-// general vending machine
 	protected:
     	Printer *vend_printer;
-      NameServer *vend_server;
+        NameServer *vend_server;
     	unsigned int VMId, sodaPrice, maxStockEachFlav, currentStocks[4] ;
-      void set(Printer &prt, NameServer &nameServer, unsigned int id, unsigned int sodaCost, unsigned int maxStockPerFlavour);
+        void set(Printer &prt, NameServer &nameServer, unsigned int id, unsigned int sodaCost, unsigned int maxStockPerFlavour);
 
 	public:
 		enum Status { BUY, STOCK, FUNDS }; // purchase status: successful buy, out of stock, insufficient funds
 		VendingMachine( Printer &prt, NameServer &nameServer,
 			unsigned int id, unsigned int sodaCost, unsigned int maxStockPerFlavour );
-		virtual ~VendingMachine();
-		// necessary to trigger destructors in inherited classes
-		virtual Status buy( Flavours flavour, WATCard*&card ); // YOU DEFINE FLAVOURS
+		virtual ~VendingMachine(); // necessary to trigger destructors in inherited classes
+		virtual Status buy( Flavours flavour, WATCard*&card );
 		virtual unsigned int*inventory();
 		virtual void restocked();
 		virtual unsigned int cost();
@@ -26,13 +25,13 @@ class VendingMachine {
 };
 
 
-class VendingMachineCardEater : public VendingMachine { // specific vending machine
+//Specfic Vending Machine
+class VendingMachineCardEater : public VendingMachine {
 	public:
 		VendingMachineCardEater( Printer &prt, NameServer &nameServer,
 			unsigned int id, unsigned int sodaCost, unsigned int maxStockPerFlavour );
-// member routines from VendingMachine
 
-		Status buy( Flavours flavour, WATCard*&card ); // YOU DEFINE FLAVOURS
+		Status buy( Flavours flavour, WATCard*&card );
 		unsigned int*inventory();
 		unsigned int cost();
 		unsigned int getId();
@@ -42,13 +41,13 @@ class VendingMachineCardEater : public VendingMachine { // specific vending mach
 };
 
 
+//Specific Vending Machine
 class VendingMachineOverCharger : public VendingMachine { // specific vending machine
    public:
 		VendingMachineOverCharger( Printer &prt, NameServer &nameServer,
 			unsigned int id, unsigned int sodaCost, unsigned int maxStockPerFlavour );
-// member routines from VendingMachine
 
-		Status buy( Flavours flavour, WATCard*&card ); // YOU DEFINE FLAVOURS
+		Status buy( Flavours flavour, WATCard*&card );
 		unsigned int*inventory();
 		unsigned int cost();
 		unsigned int getId();
