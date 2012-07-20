@@ -12,7 +12,7 @@ class Student {
       Printer *student_printer;
       Nameserver *student_server;
       WATCardOffice *student_office;
-      VendingMachine *curr;
+      VendingMachine *curr_mach;
   public:
         Student( Printer &prt, NameServer &nameServer, WATCardOffice &cardOffice, unsigned int id, unsigned int maxPurchases );
         bool action();
