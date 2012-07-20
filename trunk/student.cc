@@ -24,10 +24,18 @@ Student::Student( Printer &prt, NameServer &nameServer, WATCardOffice &cardOffic
     
     transfer(id, 5, myCard);         
     
+    // printer prints that student is about to select his or her flavour of drink
+    // and decides how many sodas does he or she needs
     student_printer->print(Printer::Student, student_id, 'S', flavour, how_many);    
+    // printer prints that student just selected the designated vending machine
     student_printer->print(Printer::Student, student_id, 'V', curr->getId());
 }
 
+/*
+  purpose: destory student
+  precondition: NONE
+  postcondition: Student
+*/
 Student::~Student()
 {
     student_printer = NULL;
@@ -39,6 +47,7 @@ Student::~Student()
     student_flavour = NULL;
     delete myCard;
     curr_mach = NULL;
+    // printer prints that student finished buying everything he needs
     student_printer->print(Printer::Student, student_id, 'F');
 }
 
