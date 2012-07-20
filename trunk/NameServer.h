@@ -1,13 +1,14 @@
 #ifndef __NAMESERVER_H__
 #define __NAMESERVER_H__
-#include "VendingMachine.h"
+#include "VendingMachine2.h"
+#include "printer.h"
+#include <vector>
+using namespace std;
 
 class NameServer {
 	private:
-		Print printerptr;
-		unsigned int numVM;
-		unsigned int numStud;
-		unsigned int counter;
+		Print *printerptr;
+		unsigned int numVM, numStud, counter;
 		vector<unsigned int> arrayOfMachines;
 		
 	public:
