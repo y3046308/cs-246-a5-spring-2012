@@ -8,8 +8,9 @@ PRNG prng;
 /*
   purpose: constructor that intializes the plant.
            It creates a truck and then do production run
-  precondition: none
-  postcondition: none
+  precondition: Printer, NameServer, unsigned int, unsigned int, unsigned int,
+               unsigned int
+  postcondition: BottlingPlant
 */
 BottlingPlant::BottlingPlant( Printer &prt, NameServer &nameServer, unsigned int numVendingMachines,
                             unsigned int maxShippedPerFlavour, unsigned int maxStockPerFlavour,
@@ -33,13 +34,14 @@ BottlingPlant::BottlingPlant( Printer &prt, NameServer &nameServer, unsigned int
     truck = new Truck(*plant_printer, *plant_server, *this, numMac, numFla );
     // performing a production run
     production_run();
+    // and show truck's 'action'
     truck->action();                
 }
 
 /*
   purpose: destructor that destroys everything.
   precondition: none
-  postcondition: none
+  postcondition: BottlingPlant
 */
 BottlingPlant::~BottlingPlant()
 {
@@ -56,7 +58,7 @@ BottlingPlant::~BottlingPlant()
        list[i] = 0;    
    }
    
-   plant_printer->print(Printer::BottlingPlant, 'F');                               
+    plant_printer->print(Printer::BottlingPlant, 'F');                               
 }
 
 /*
@@ -70,7 +72,7 @@ void BottlingPlant::getShipment( unsigned int cargo[ ] )
      {
          cargo[i] = list[i];    
      }
-     plant_printer->print(Printer::BottlingPlant, 'P')
+     plant_printer->print(Printer::Truck, 'P')
 }
 
 /*
@@ -82,19 +84,20 @@ void BottlingPlant::getShipment( unsigned int cargo[ ] )
 */
 void BottlingPlant::action()
 {
-     int on_strike = prng(1,5)
-     if (on_strike == 1) // plant on strike
+     int on_strike = prng(1,5) // there is 1 in 5 chance that
+     if (on_strike == 1)       // plant go on strike
      {
         plant_printer->print(Printer::BottlingPlant, 'X')
         return;         
      }
-     else
+     else // if plant is working properly, start producing soda
      {
          int truck_return = prng(1, DeliveryTime);
+         // if truck has returned 
          if (truck_return == 1)
          {
-            truck-->action();  
-            production_run();               
+            production_run();  // produces sodas
+            truck->action();  // then truck delivers them     
          }
          else
          {
