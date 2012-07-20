@@ -3,6 +3,7 @@
 
 class WATCard {
       private:
+                // indicates money in Watcard
                 unsigned int balance;
       public:
              WATCard();
