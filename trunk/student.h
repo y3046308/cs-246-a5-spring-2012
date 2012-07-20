@@ -1,7 +1,7 @@
 #ifndef __STUDENT_H__
 #define __STUDENT_H__
 #include "printer.h"
-#include "nameserver.h"
+#include "NameServer.h"
 #include "office.h"
 #include "flavour.h"
 
