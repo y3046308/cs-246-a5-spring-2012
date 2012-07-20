@@ -1,7 +1,7 @@
 #ifndef __TRUCK_H__
 #define __TRUCK_H__
 #include "printer.h"
-#include "nameserver.h"
+#include "NameServer.h"
 #include "plant.h"
 
 class Truck {
