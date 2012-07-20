@@ -93,10 +93,8 @@ bool Student::action()
     if (myCard == NULL) // card destroyed by vending machine
     {
         student_printer->print(Printer::Student, id, 'D');
-        myCard = new WATCard(); 
-
         student_printer->print(Printer::Student, id, 't', 5); 
-        student_office->transfer(id, 5, *myCard); // transfer $5 to empty card
+        myCard = student_office->create(id,5); // created a new watcard with $5 balance
         student_printer->print(Printer::Student, id, 'T', myCard->curr_balance());     
     }
     
