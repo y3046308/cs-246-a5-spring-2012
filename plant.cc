@@ -113,12 +113,13 @@ void BottlingPlant::action()
 */
 void production_run()
 { 
-    unsigned int total = 0; 
+    unsigned int production_size = 0;
     for(int i=0; i<4; i += 1)
     {
         int rand_stock = prng(1,maxShip);
         list[i] = rand_stock;
         production_size += rand_stock;
     }
-    plant_printer->print(Printer::BottlingPlant, 'G', production_size); 
+    plant_printer->print(Printer::BottlingPlant, 'G', production_size);
+
 }
